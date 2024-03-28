@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="~{ nav.html::navbar }"></div>
+
+<div class="card" th:each="i : ${items}">
+    <img src="https://placehold.co/300">
+    <div>
+        <h4 th:text="${i.title}"></h4>
+        <form action="/update" method="post">
+            <input type="hidden" name="id" th:value="${i.id}">
+            <input name="title" placeholder="상품의 이름을 입력해주세요.">
+            <p th:text="${i.price}"></p>
+            <input name="price" placeholder="상품의 가격을 입력해주세요.">
+            <button type="submit">수정하기</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
